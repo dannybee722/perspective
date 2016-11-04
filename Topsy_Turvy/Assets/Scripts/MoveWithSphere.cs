@@ -9,19 +9,33 @@ public class MoveWithSphere : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if (Camera.allCameras[0].tag.Equals("Cam1"))
         {
-            gameObject.transform.Translate(Vector3.left * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                gameObject.transform.Translate(Vector3.left * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                gameObject.transform.Translate(Vector3.right * Time.deltaTime);
+            }
         }
-        if(Input.GetKey(KeyCode.RightArrow))
+        if (Camera.allCameras[0].tag.Equals("Cam2"))
         {
-            gameObject.transform.Translate(Vector3.right * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                gameObject.transform.Translate(Vector3.back * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
+            }
         }
     }
     
     void OnCollisionStay(Collision other)
     {
-        if(other.gameObject.CompareTag("Sphere"))
+        if((Camera.allCameras[0].tag.Equals("Cam1") || Camera.allCameras[0].tag.Equals("Cam2")) && other.gameObject.CompareTag("Sphere"))
         {
             Vector3 newPos = new Vector3(gameObject.transform.position.x, other.gameObject.transform.position.y, gameObject.transform.position.z);
             other.gameObject.transform.position = newPos;

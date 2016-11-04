@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Move_Camera.unity
+- path: Assets/Scenes/Camera_Geo_Test.unity
   isLoaded: 1
   isActive: 1

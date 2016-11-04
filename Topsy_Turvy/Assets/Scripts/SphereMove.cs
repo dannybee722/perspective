@@ -23,11 +23,11 @@ public class SphereMove : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
+                gameObject.transform.Translate(Vector3.back * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                gameObject.transform.Translate(Vector3.back * Time.deltaTime);
+                gameObject.transform.Translate(Vector3.forward * Time.deltaTime);
             }
         }
 	

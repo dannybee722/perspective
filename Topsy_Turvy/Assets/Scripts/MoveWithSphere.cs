@@ -9,7 +9,7 @@ public class MoveWithSphere : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Camera.allCameras[0].tag.Equals("Cam1"))
+        if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Cam1"))
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -20,7 +20,7 @@ public class MoveWithSphere : MonoBehaviour {
                 gameObject.transform.Translate(Vector3.right * Time.deltaTime);
             }
         }
-        if (Camera.allCameras[0].tag.Equals("Cam2"))
+        if (Camera.allCameras[0].tag.Equals("Cam2") && gameObject.tag.Equals("Cam2"))
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {

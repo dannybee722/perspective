@@ -7,20 +7,23 @@ public class CameraControl2 : MonoBehaviour {
     public Camera cam1;
     public Camera cam2;
     public Camera cam3;
-    public Camera transCam;
+    private Camera transCam;
+    public GameObject centerObj;
 
     private Camera startCam;
     private Camera current;
     private Camera target;
+    private Vector3 center; 
 
     private bool isMoving = false;
 
     //slerp stuff
     public float journeyTime = 1.0f;
-    public Vector3 center = new Vector3(0,0,0);
 
-    // Use this for initialization
-    void Start () {
+    void Awake()
+    {
+        center = centerObj.transform.position;
+        transCam = gameObject.GetComponent<Camera>();
 
         transCam.transform.rotation = cam1.transform.rotation;
         transCam.transform.position = cam1.transform.position;
@@ -30,22 +33,22 @@ public class CameraControl2 : MonoBehaviour {
         cam2.enabled = false;
         cam3.enabled = false;
         transCam.enabled = true;
-}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         
         if (!isMoving)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1) && transCam.transform.position != cam1.transform.position)
             {
                 StartCoroutine(cameraTransition(cam1));
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.Alpha2) && transCam.transform.position != cam2.transform.position)
             {
                 StartCoroutine(cameraTransition(cam2));
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.Alpha3) && transCam.transform.position != cam3.transform.position)
             {
                 StartCoroutine(cameraTransition(cam3));
             }
@@ -57,9 +60,9 @@ public class CameraControl2 : MonoBehaviour {
         isMoving = true;
         float startTime = Time.time;
 
-        Vector3 startCenter = transCam.transform.position - center;
+        Vector3 startCenter = transCam.transform.position;
         float startSize = transCam.orthographicSize;
-        Vector3 endCenter = target.transform.position - center;
+        Vector3 endCenter = target.transform.position;
 
         //move transcam between initial and target
         while (Time.time - startTime <= journeyTime)

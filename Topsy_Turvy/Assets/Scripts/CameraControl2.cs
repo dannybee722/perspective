@@ -36,24 +36,19 @@ public class CameraControl2 : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
         
         if (!isMoving)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1) && transCam.transform.position != cam1.transform.position)
-            {
-                StartCoroutine(cameraTransition(cam1));
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && transCam.transform.position != cam2.transform.position)
-            {
-                StartCoroutine(cameraTransition(cam2));
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && transCam.transform.position != cam3.transform.position)
-            {
-                StartCoroutine(cameraTransition(cam3));
-            }
+			if (Input.GetKeyDown(KeyCode.Alpha1) && DifCamPos(transCam, cam1)) StartCoroutine(cameraTransition(cam1));
+			if (Input.GetKeyDown(KeyCode.Alpha2) && DifCamPos(transCam, cam2)) StartCoroutine(cameraTransition(cam2));
+			if (Input.GetKeyDown(KeyCode.Alpha3) && DifCamPos(transCam, cam3)) StartCoroutine(cameraTransition(cam3));
         }
     }
+
+	bool DifCamPos(Camera c1, Camera c2) {
+		return c1.transform.position != c2.transform.position;
+	}
 
     IEnumerator cameraTransition(Camera target)
     {

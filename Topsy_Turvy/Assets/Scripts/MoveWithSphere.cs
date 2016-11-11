@@ -6,10 +6,17 @@ public class MoveWithSphere : MonoBehaviour {
     void Start () {
 
 	}
+<<<<<<< HEAD
     Camera current = Camera.allCameras[0];
     // Update is called once per frame
     void Update () {
         if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Cam1"))
+=======
+	
+	// Update is called once per frame
+	void Update () {
+        if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Plat1"))
+>>>>>>> 55624324feebefcb54346bf29863ca3abd96eb87
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -20,7 +27,7 @@ public class MoveWithSphere : MonoBehaviour {
                 gameObject.transform.Translate(Vector3.right * Time.deltaTime);
             }
         }
-        if (Camera.allCameras[0].tag.Equals("Cam2") && gameObject.tag.Equals("Cam2"))
+        if (Camera.allCameras[0].tag.Equals("Cam2") && gameObject.tag.Equals("Plat2"))
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -35,11 +42,16 @@ public class MoveWithSphere : MonoBehaviour {
     
     void OnCollisionStay(Collision other)
     {
-        if((Camera.allCameras[0].tag.Equals("Cam1") || Camera.allCameras[0].tag.Equals("Cam2")) && other.gameObject.CompareTag("Sphere"))
+        if(Camera.allCameras[0].tag.Equals("Cam1") && other.gameObject.CompareTag("Sphere"))
         {
-            Vector3 newPos = new Vector3(gameObject.transform.position.x, other.gameObject.transform.position.y, gameObject.transform.position.z);
+            Vector3 newPos = new Vector3(gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z);
             other.gameObject.transform.position = newPos;
         }
-        
+        if (Camera.allCameras[0].tag.Equals("Cam2") && other.gameObject.CompareTag("Sphere"))
+        {
+            Vector3 newPos = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, gameObject.transform.position.z);
+            other.gameObject.transform.position = newPos;
+        }
+
     }
 }

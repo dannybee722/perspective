@@ -8,6 +8,8 @@ TagManager:
   - Cam1
   - Cam2
   - Cam3
+  - Plat1
+  - Plat2
   layers:
   - Default
   - TransparentFX

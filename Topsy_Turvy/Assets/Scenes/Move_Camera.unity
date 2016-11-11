@@ -279,7 +279,7 @@ GameObject:
   - 114: {fileID: 354026651}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Cam2
+  m_TagString: Plat2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,7 +386,7 @@ GameObject:
   - 114: {fileID: 438968213}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Cam1
+  m_TagString: Plat1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -695,7 +695,7 @@ GameObject:
   - 114: {fileID: 785617057}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Cam2
+  m_TagString: Plat2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,8 +754,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.4294383, z: 1}
+  m_Center: {x: 0, y: 0.28528118, z: 0}
 --- !u!33 &785617055
 MeshFilter:
   m_ObjectHideFlags: 0

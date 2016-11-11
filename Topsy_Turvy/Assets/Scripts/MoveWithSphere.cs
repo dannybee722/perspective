@@ -6,17 +6,10 @@ public class MoveWithSphere : MonoBehaviour {
     void Start () {
 
 	}
-<<<<<<< HEAD
-    Camera current = Camera.allCameras[0];
-    // Update is called once per frame
-    void Update () {
-        if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Cam1"))
-=======
-	
+
 	// Update is called once per frame
 	void Update () {
         if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Plat1"))
->>>>>>> 55624324feebefcb54346bf29863ca3abd96eb87
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {

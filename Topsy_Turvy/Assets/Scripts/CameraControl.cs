@@ -170,11 +170,16 @@ public class CameraControl : MonoBehaviour {
             if (Switch == 3)
             {
                 print("1to3");
-                while ((transCam.transform.rotation.x <  cam3.transform.rotation.x)
-                    && (transCam.transform.rotation.y < cam3.transform.rotation.y))
-                {
+                while ((transCam.transform.rotation.x >= cam3.transform.rotation.x)
+                    && (transCam.transform.rotation.y <= cam3.transform.rotation.y)
+                    //&& (transCam.transform.rotation.z >= cam3.transform.rotation.z)
+                    )
+                { 
                     transCam.transform.RotateAround(Vector3.zero, Vector3.left, -1 * Time.deltaTime * speed);
-                    transCam.transform.Rotate(Vector3.back * Time.deltaTime * speed);
+                    transCam.transform.Rotate(Vector3.back * Time.deltaTime * (speed/2));
+                    //transCam.transform.Translate((-speed), (speed), (-speed));
+
+
                     yield return new WaitForSeconds(.03f);
                     print(transCam.transform.rotation.x);
                 }

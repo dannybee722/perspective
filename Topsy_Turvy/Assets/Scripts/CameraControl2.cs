@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Rewired;
+using UnityEngine;
 using System.Collections;
 
 public class CameraControl2 : MonoBehaviour {
@@ -20,8 +21,10 @@ public class CameraControl2 : MonoBehaviour {
     //slerp stuff
     public float journeyTime = 1.0f;
 
-    void Awake()
-    {
+
+    void Awake() {
+		
+
         center = centerObj.transform.position;
         transCam = gameObject.GetComponent<Camera>();
 
@@ -37,12 +40,13 @@ public class CameraControl2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-        
-        if (!isMoving)
-        {
-			if (Input.GetKeyDown(KeyCode.Alpha1) && DifCamPos(transCam, cam1)) StartCoroutine(cameraTransition(cam1));
-			if (Input.GetKeyDown(KeyCode.Alpha2) && DifCamPos(transCam, cam2)) StartCoroutine(cameraTransition(cam2));
-			if (Input.GetKeyDown(KeyCode.Alpha3) && DifCamPos(transCam, cam3)) StartCoroutine(cameraTransition(cam3));
+		if (!isMoving) {
+			if (gameInit.instance.rewiredPlayer.GetButtonDown("SwitchCam1") && DifCamPos(transCam, cam1)) 
+				StartCoroutine(cameraTransition(cam1));
+			if (gameInit.instance.rewiredPlayer.GetButtonDown("SwitchCam2") && DifCamPos(transCam, cam2)) 
+				StartCoroutine(cameraTransition(cam2));
+			if (gameInit.instance.rewiredPlayer.GetButtonDown("SwitchCam3") && DifCamPos(transCam, cam3)) 
+				StartCoroutine(cameraTransition(cam3));
         }
     }
 
@@ -50,8 +54,7 @@ public class CameraControl2 : MonoBehaviour {
 		return c1.transform.position != c2.transform.position;
 	}
 
-    IEnumerator cameraTransition(Camera target)
-    {
+    IEnumerator cameraTransition(Camera target) {
         isMoving = true;
         float startTime = Time.time;
 
@@ -60,8 +63,7 @@ public class CameraControl2 : MonoBehaviour {
         Vector3 endCenter = target.transform.position;
 
         //move transcam between initial and target
-        while (Time.time - startTime <= journeyTime)
-        {
+        while (Time.time - startTime <= journeyTime) {
             float fracComplete = (Time.time - startTime) / journeyTime;
             transCam.transform.position = Vector3.Slerp(startCenter, endCenter, fracComplete);
             transCam.transform.LookAt(center);

@@ -9,8 +9,7 @@ public class MoveWithSphere : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Plat1"))
-        {
+        if (Camera.allCameras[0].tag.Equals("Cam1") && gameObject.tag.Equals("Plat1")) {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 gameObject.transform.Translate(Vector3.left * Time.deltaTime);

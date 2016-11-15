@@ -1,0 +1,4 @@
+2016 - 11 - 15
+You know what would be cool? If instead of a sphere for the player, they were
+a 2d texture but always billboarding to the camera. And then when they change
+directions, they flip around like Paper Mario.
